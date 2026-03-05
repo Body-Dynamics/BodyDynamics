@@ -181,8 +181,8 @@
       top: 0;
       z-index: 1000;
       background: var(--white);
-      backdrop-filter: saturate(150%) blur(6px);
-      border-bottom: 1px solid transparent;
+      backdrop-filter: saturate(150%) blur(10px);
+      /* border-bottom: 1px solid transparent; */
       transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
