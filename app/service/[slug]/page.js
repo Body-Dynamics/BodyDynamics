@@ -99,16 +99,16 @@ export default async function ServicePage({ params }) {
                 </div>
             </section>
 
-            {service.audiology && (
+            {service.extra_info && (
                 <section className="sc-section sc-section-audiology">
                     <div className="container">
                         <div className="sc-intro">
-                            <h2 className="section-title">{service.audiology.title}</h2>
+                            <h2 className="section-title">{service.extra_info.title}</h2>
                             <div className="section-line" style={{ marginInline: "auto" }}></div>
-                            <p>{service.audiology.desc}</p>
+                            <p>{service.extra_info.desc}</p>
                         </div>
                         <div className="sc-audio-grid">
-                            {service.audiology.items.map((item, idx) => (
+                            {service.extra_info.items.map((item, idx) => (
                                 <div key={idx} className="sc-audio-item">
                                     <div className="sc-audio-icon">
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
