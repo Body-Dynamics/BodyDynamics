@@ -29,7 +29,6 @@ export default function Navbar() {
                         alt="Body Dynamics Clinic Logo"
                         width="100"
                         height="100"
-                        style={{ paddingBottom: "1px" }}
                     />
                     <div className="logo-text">
                         <div className="brand">Body Dynamics</div>

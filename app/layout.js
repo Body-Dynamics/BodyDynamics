@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <body>
         <div className="utility-bar">
           <div className="container utility-inner">
-            <span>Call us: +91 902-907-0620 | Email: info@bodydynamics.com</span>
+            <span className="contact-info">Call us: +91 902-907-0620 | Email: info@bodydynamics.com</span>
             <div className="utility-links">
               <Link href="/#services">Programs</Link>
               <Link href="/#team">Specialists</Link>

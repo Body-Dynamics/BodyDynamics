@@ -1,4 +1,4 @@
-﻿    :root {
+    :root {
       --navy: #092C56;
       /* Abyss */
       --teal: #225688;
@@ -165,7 +165,13 @@
       color: white;
     }
 
+    .contact-info {
+      font-size: 0.88rem;
+      color: var(--sky);
+    }
+
     .utility-links {
+      font-size: 0.88rem;
       display: flex;
       align-items: center;
       gap: 20px;
@@ -207,11 +213,12 @@
       align-items: center;
       gap: 12px;
       flex-shrink: 0;
+      overflow: visible;
     }
 
-    .nav-logo svg {
-      width: 42px;
-      height: 42px;
+    .nav-logo img {
+      border-radius: 0 !important;
+      object-fit: contain !important;
     }
 
     .logo-text .brand {
@@ -733,6 +740,10 @@
       display: block;
     }
 
+    .team-head .section-line {
+      margin-inline: auto;
+    }
+
     .dept-grid-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -865,7 +876,7 @@
     #contact {
       background: var(--navy) !important;
       color: var(--white);
-      padding: 60px 0 30px;
+      padding: 60px 0 20px;
     }
 
     .footer-grid {
@@ -878,20 +889,20 @@
     .footer-title {
       font-family: var(--serif);
       color: #ffffff;
-      font-size: 1.28rem;
+      font-size: 1.5rem;
       margin-bottom: 10px;
     }
 
     .footer-tag {
       color: var(--sky);
-      font-size: 0.9rem;
+      font-size: 1.3rem;
       line-height: 1.7;
       max-width: 420px;
       opacity: 0.8;
     }
 
     .footer-col h4 {
-      font-size: 0.76rem;
+      font-size: 1rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--slate);
@@ -906,7 +917,7 @@
 
     .footer-col li {
       color: var(--white);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       line-height: 1.6;
       opacity: 0.9;
     }
@@ -984,6 +995,8 @@
       .nav-logo img {
         width: 80px !important;
         height: auto !important;
+        border-radius: 0 !important;
+        object-fit: contain !important;
       }
 
       .logo-text .brand {
@@ -1262,6 +1275,9 @@
 
       .nav-logo img {
         width: 60px !important;
+        height: auto !important;
+        border-radius: 0 !important;
+        object-fit: contain !important;
       }
 
       .nav-inner {
