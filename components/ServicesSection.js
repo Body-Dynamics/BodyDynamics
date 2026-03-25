@@ -34,10 +34,10 @@ export default function ServicesSection() {
                             className="service-card reveal"
                             style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
                         >
-                            <div
+                            {/* <div
                                 className="service-icon"
                                 dangerouslySetInnerHTML={{ __html: service.icon }}
-                            />
+                            /> */}
                             <h3 className="service-title">{service.name}</h3>
                             <p className="service-desc">{service.desc}</p>
                         </Link>

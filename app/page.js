@@ -93,7 +93,6 @@ export default function Home() {
           <Link
             className="btn btn-outline"
             href="/#contact"
-          // style={{ borderColor: "#eef4f7", color: "#eef4f7" }}
           >
             Contact Us
           </Link>
