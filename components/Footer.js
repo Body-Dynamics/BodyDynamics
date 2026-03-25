@@ -21,11 +21,11 @@ export default function Footer() {
                     <div className="footer-col">
                         <h4>Contact</h4>
                         <ul>
+                            <li>Phone: +91 902-907-0620</li>
                             <li>
                                 Address: 02, Ground Floor, D Wing, Building No. 3, Golders Green CHSL, I C Colony, Borivali West, Mumbai, Maharashtra - 400103 <br /> Near YMCA Garden
                             </li>
-                            <li>+91 902-907-0620</li>
-                            <li>info@bodydynamics.com</li>
+                            <li>Email: info@bodydynamics.com</li>
                         </ul>
                     </div>
                 </div>
