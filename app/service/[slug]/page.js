@@ -73,9 +73,26 @@ export default async function ServicePage({ params }) {
                         <p>Our specialists assess, diagnose, and treat a wide range of conditions, including:</p>
                     </div>
                     <div className="sc-conditions-grid">
-                        {service.conditions.map((condition, idx) => (
-                            <div key={idx} className="sc-condition">{condition}</div>
-                        ))}
+                        {service.conditions.map((condition, idx) => {
+                            if (slug === "physiotherapy") {
+                                return (
+                                    <details key={idx} className="sc-condition dropdown-condition">
+                                        <summary>
+                                            <span style={{flex: 1}}>{condition}</span>
+                                            <svg className="sc-dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </summary>
+                                        <div className="sc-condition-content">
+                                            {/* Cases will be added here later */}
+                                        </div>
+                                    </details>
+                                );
+                            }
+                            return (
+                                <div key={idx} className="sc-condition">{condition}</div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -87,12 +104,77 @@ export default async function ServicePage({ params }) {
                         <div className="section-line" style={{ marginInline: "auto" }}></div>
                         <p>Therapy is individualized and evidence-based, tailored to each patient's specific needs and goals.</p>
                     </div>
-                    <div className="sc-strategies-grid">
-                        {service.strategies.map((strategy, idx) => (
-                            <div key={idx} className="sc-strategy">
-                                <div className="sc-strategy-num">{idx + 1}</div>
-                                <strong>{strategy.title}</strong>
-                                <p>{strategy.desc}</p>
+                    <div className="sc-strategies-content">
+                        {service.strategies.some(s => !s.subSections) && (
+                            <div className="sc-strategies-grid">
+                                {service.strategies.filter(s => !s.subSections).map((strategy, idx) => (
+                                    <div key={idx} className="sc-strategy">
+                                        <div className="sc-strategy-num">{idx + 1}</div>
+                                        <strong>{strategy.title}</strong>
+                                        <p style={{ whiteSpace: "pre-line" }}>{strategy.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {service.strategies.filter(s => s.subSections).map((strategy, idx) => (
+                            <div key={`group-${idx}`} className="sc-strategy-group" style={{ marginTop: idx > 0 || service.strategies.some(s => !s.subSections) ? "5rem" : "1rem" }}>
+                                <div className="sc-strategy-header">
+                                    <h3 style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderBottom: "2px solid #A9CBE0", paddingBottom: "0.5rem", display: "inline-block" }}>
+                                        {strategy.title}
+                                    </h3>
+                                    <p style={{ whiteSpace: "pre-line", color: "var(--muted)", lineHeight: "1.7", fontSize: "1rem", maxWidth: "900px" }}>
+                                        {strategy.desc}
+                                    </p>
+                                    {strategy.aim && (
+                                        <div style={{ marginTop: "1.5rem", padding: "1.5rem", background: "rgba(169, 203, 224, 0.15)", borderRadius: "12px", borderLeft: "4px solid var(--teal)", maxWidth: "900px" }}>
+                                            {typeof strategy.aim === "string" ? (
+                                                <p style={{ whiteSpace: "pre-line", color: "var(--navy)", lineHeight: "1.7", fontSize: "0.95rem", margin: 0, fontWeight: "500" }}>
+                                                    {strategy.aim}
+                                                </p>
+                                            ) : (
+                                                <div style={{ color: "var(--navy)", fontSize: "0.95rem", lineHeight: "1.7" }}>
+                                                    <p style={{ fontWeight: "600", marginBottom: "0.2rem" }}>{strategy.aim.intro}</p>
+                                                    <ul style={{ paddingLeft: "1.5rem", marginBottom: "1rem" }}>
+                                                        {strategy.aim.points.map((pt, i) => <li key={i} style={{ marginBottom: "0.3rem" }}>{pt}</li>)}
+                                                    </ul>
+                                                    <p style={{ fontWeight: "600", marginBottom: "0.2rem" }}>{strategy.aim.outro}</p>
+                                                    <ul style={{ paddingLeft: "1.5rem", margin: 0 }}>
+                                                        {strategy.aim.outcomes.map((pt, i) => <li key={i} style={{ marginBottom: "0.3rem" }}>{pt}</li>)}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="sc-strategies-grid" style={{ marginTop: "2rem" }}>
+                                    {strategy.subSections.map((sub, sIdx) => {
+                                        if (sub.highlight) {
+                                            return (
+                                                <div key={sIdx} className="sc-strategy" style={{ 
+                                                    background: "linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%)", 
+                                                    borderColor: "transparent",
+                                                    boxShadow: "0 12px 30px rgba(9, 44, 86, 0.25)",
+                                                    position: "relative",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <div className="sc-strategy-num" style={{ background: "rgba(255, 255, 255, 0.15)", color: "#ffffff", position: "relative", zIndex: 1 }}>
+                                                        {sIdx + 1}
+                                                    </div>
+                                                    <strong style={{ color: "#ffffff", position: "relative", zIndex: 1, fontSize: "1.05rem", textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}>{sub.title}</strong>
+                                                    <p style={{ whiteSpace: "pre-line", color: "rgba(255,255,255,0.9)", position: "relative", zIndex: 1, marginTop: "0.2rem" }}>{sub.desc}</p>
+                                                </div>
+                                            );
+                                        }
+                                        return (
+                                            <div key={sIdx} className="sc-strategy">
+                                                <div className="sc-strategy-num">{sIdx + 1}</div>
+                                                <strong>{sub.title}</strong>
+                                                <p style={{ whiteSpace: "pre-line" }}>{sub.desc}</p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         ))}
                     </div>
