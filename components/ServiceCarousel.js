@@ -26,10 +26,16 @@ export default function ServiceCarousel({ images, title }) {
             >
                 {images.map((image, i) => (
                     <div key={i} className="sc-carousel-slide">
-                        <img
-                            src={`/images/${image}`}
-                            alt={`${title} Image ${i + 1}`}
-                        />
+                        <div 
+                            className="sc-carousel-blur-bg"
+                            style={{ backgroundImage: `url('/images/${image}')` }}
+                        ></div>
+                        <div className="sc-carousel-img-wrapper">
+                            <img
+                                src={`/images/${image}`}
+                                alt={`${title} Image ${i + 1}`}
+                            />
+                        </div>
                     </div>
                 ))}
             </div>
