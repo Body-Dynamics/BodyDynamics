@@ -65,6 +65,22 @@ export default async function ServicePage({ params }) {
                 </div>
             </header>
 
+            {service.overview && (
+                <section className="sc-section sc-section-overview" style={{ background: "linear-gradient(to bottom, var(--navy), var(--teal))" }}>
+                    <div className="container">
+                        <div className="sc-intro">
+                            <h2 className="section-title" style={{ color: "#ffffff" }}>Overview</h2>
+                            <div className="section-line" style={{ marginInline: "auto", background: "var(--sky)" }}></div>
+                        </div>
+                        <div style={{ maxWidth: "900px", margin: "0 auto", background: "rgba(255, 255, 255, 0.12)", border: "1px solid rgba(255, 255, 255, 0.2)", borderLeft: "4px solid var(--sky)", padding: "2.5rem", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)", backdropFilter: "blur(10px)" }}>
+                            <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "center" }}>
+                                {service.overview}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            )}
+
             <section className="sc-section sc-section-conditions">
                 <div className="container">
                     <div className="sc-intro">
@@ -180,6 +196,37 @@ export default async function ServicePage({ params }) {
                     </div>
                 </div>
             </section>
+
+            {service.signs_of_need && (
+                <section className="sc-section sc-section-signs" style={{ background: "rgba(242, 246, 249, 0.5)" }}>
+                    <div className="container">
+                        <div className="sc-intro">
+                            <h2 className="section-title">Signs Your Child May Benefit</h2>
+                            <div className="section-line" style={{ marginInline: "auto" }}></div>
+                            <p>Here are some indicators that occupational therapy or sensory integration might be beneficial.</p>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2.5rem", marginTop: "2rem" }}>
+                            {service.signs_of_need.map((group, idx) => (
+                                <div key={`sign-group-${idx}`} style={{ display: "flex", flexDirection: "column" }}>
+                                    <div style={{ textAlign: "left", marginBottom: "1.2rem" }}>
+                                        <h3 style={{ fontSize: "1.25rem", color: "var(--teal)", margin: 0, borderBottom: "2px solid rgba(169, 203, 224, 0.4)", paddingBottom: "0.5rem", display: "inline-block" }}>
+                                            {group.category}
+                                        </h3>
+                                    </div>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
+                                        {group.items.map((item, iIdx) => (
+                                            <div key={iIdx} className="sc-strategy" style={{ padding: "1.2rem", margin: 0, minHeight: "auto", flex: 1, display: "flex", alignItems: "center", background: "rgba(169, 203, 224, 0.15)", borderRadius: "12px", border: "1px solid rgba(169, 203, 224, 0.3)" }}>
+                                                <p style={{ margin: 0, fontSize: "0.95rem", color: "var(--navy)", lineHeight: "1.5" }}>{item}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
 
             {service.extra_info && (
                 <section className="sc-section sc-section-audiology">

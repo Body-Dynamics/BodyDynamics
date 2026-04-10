@@ -92,9 +92,10 @@ export default function Home() {
           </div>
           <Link
             className="btn btn-outline"
-            href="https://wa.me/917738571105?text=Hi, I would like to book an appointment."
-            target="_blank"
-            rel="noopener noreferrer"
+            // href="https://wa.me/917738571105?text=Hi, I would like to book an appointment."
+            href="#contact"
+          // target="_blank"
+          // rel="noopener noreferrer"
           >
             Contact Us
           </Link>
