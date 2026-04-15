@@ -94,7 +94,7 @@ export default async function ServicePage({ params }) {
                                 return (
                                     <details key={idx} className="sc-condition dropdown-condition">
                                         <summary>
-                                            <span style={{flex: 1}}>{condition}</span>
+                                            <span style={{ flex: 1 }}>{condition}</span>
                                             <svg className="sc-dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                 <polyline points="6 9 12 15 18 9"></polyline>
                                             </svg>
@@ -105,6 +105,16 @@ export default async function ServicePage({ params }) {
                                     </details>
                                 );
                             }
+                            if (condition === "Audiology Services") {
+                                return (
+                                    <Link key={idx} href="#audiology-services" className="sc-condition" style={{ background: "linear-gradient(135deg, var(--sky) 0%, rgba(169, 203, 224, 0.4) 100%)", border: "1px solid var(--teal)", color: "var(--navy)", fontWeight: "600", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textDecoration: "none" }}>
+                                        <span>{condition}</span>
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </Link>
+                                );
+                            }
                             return (
                                 <div key={idx} className="sc-condition">{condition}</div>
                             );
@@ -112,6 +122,61 @@ export default async function ServicePage({ params }) {
                     </div>
                 </div>
             </section>
+
+            {service.signs_of_need && slug === 'occupational-therapy' && (
+                <section className="sc-section sc-section-signs" style={{ background: "rgba(242, 246, 249, 0.5)" }}>
+                    <div className="container">
+                        <div className="sc-intro">
+                            <h2 className="section-title">Signs Your Child May Benefit</h2>
+                            <div className="section-line" style={{ marginInline: "auto" }}></div>
+                            <p>Here are some indicators that occupational therapy or sensory integration might be beneficial.</p>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2.5rem", marginTop: "2rem" }}>
+                            {service.signs_of_need.map((group, idx) => (
+                                <div key={`sign-group-${idx}`} style={{ display: "flex", flexDirection: "column" }}>
+                                    <div style={{ textAlign: "left", marginBottom: "1.2rem" }}>
+                                        <h3 style={{ fontSize: "1.25rem", color: "var(--teal)", margin: 0, borderBottom: "2px solid rgba(169, 203, 224, 0.4)", paddingBottom: "0.5rem", display: "inline-block" }}>
+                                            {group.category}
+                                        </h3>
+                                    </div>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
+                                        {group.items.map((item, iIdx) => (
+                                            <div key={iIdx} className="sc-strategy" style={{ padding: "1.2rem", margin: 0, minHeight: "auto", flex: 1, display: "flex", alignItems: "center", background: "rgba(169, 203, 224, 0.15)", borderRadius: "12px", border: "1px solid rgba(169, 203, 224, 0.3)" }}>
+                                                <p style={{ margin: 0, fontSize: "0.95rem", color: "var(--navy)", lineHeight: "1.5" }}>{item}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {(slug === 'speech-therapy' || slug === 'remedial-therapy') && service.extra_info && (
+                <section id={slug === 'speech-therapy' ? "audiology-services" : "aims-section"} className="sc-section sc-section-audiology">
+                    <div className="container">
+                        <div className="sc-intro">
+                            <h2 className="section-title">{service.extra_info.title}</h2>
+                            <div className="section-line" style={{ marginInline: "auto" }}></div>
+                            <p>{service.extra_info.desc}</p>
+                        </div>
+                        <div className="sc-audio-grid">
+                            {service.extra_info.items.map((item, idx) => (
+                                <div key={idx} className="sc-audio-item">
+                                    <div className="sc-audio-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <circle cx="12" cy="12" r="3" />
+                                            <path d="M12 3a9 9 0 0 1 0 18" />
+                                        </svg>
+                                    </div>
+                                    <span className="sc-audio-text">{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             <section className="sc-section sc-section-strategies">
                 <div className="container">
@@ -167,8 +232,8 @@ export default async function ServicePage({ params }) {
                                     {strategy.subSections.map((sub, sIdx) => {
                                         if (sub.highlight) {
                                             return (
-                                                <div key={sIdx} className="sc-strategy" style={{ 
-                                                    background: "linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%)", 
+                                                <div key={sIdx} className="sc-strategy" style={{
+                                                    background: "linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%)",
                                                     borderColor: "transparent",
                                                     boxShadow: "0 12px 30px rgba(9, 44, 86, 0.25)",
                                                     position: "relative",
@@ -197,7 +262,7 @@ export default async function ServicePage({ params }) {
                 </div>
             </section>
 
-            {service.signs_of_need && (
+            {service.signs_of_need && slug !== 'occupational-therapy' && (
                 <section className="sc-section sc-section-signs" style={{ background: "rgba(242, 246, 249, 0.5)" }}>
                     <div className="container">
                         <div className="sc-intro">
@@ -228,7 +293,7 @@ export default async function ServicePage({ params }) {
             )}
 
 
-            {service.extra_info && (
+            {service.extra_info && slug !== 'speech-therapy' && slug !== 'remedial-therapy' && (
                 <section className="sc-section sc-section-audiology">
                     <div className="container">
                         <div className="sc-intro">

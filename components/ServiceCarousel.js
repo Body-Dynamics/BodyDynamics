@@ -5,42 +5,63 @@ import Image from "next/image";
 
 export default function ServiceCarousel({ images, title }) {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
-        if (!images || images.length === 0) return;
+        if (!images || images.length === 0 || isHovered) return;
 
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         }, 4000);
 
         return () => clearInterval(interval);
-    }, [images]);
+    }, [images, currentIndex, isHovered]);
 
     if (!images || images.length === 0) return null;
 
+    const currentImage = images[currentIndex];
+    const currentTitle = typeof currentImage === "string" ? null : currentImage.title;
+
     return (
-        <div className="sc-carousel-container">
-            <div
-                className="sc-carousel-track"
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-                {images.map((image, i) => (
-                    <div key={i} className="sc-carousel-slide">
-                        <div 
-                            className="sc-carousel-blur-bg"
-                            style={{ backgroundImage: `url('/images/${image}')` }}
-                        ></div>
-                        <div className="sc-carousel-img-wrapper">
-                            <img
-                                src={`/images/${image}`}
-                                alt={`${title} Image ${i + 1}`}
-                            />
-                        </div>
-                    </div>
-                ))}
+        <div className="sc-carousel-wrapper">
+            <div className="sc-carousel-dynamic-title-container">
+                {currentTitle && (
+                    <h3 key={currentTitle} className="sc-carousel-dynamic-title">
+                        {currentTitle}
+                    </h3>
+                )}
             </div>
 
-            <button
+            <div 
+                className="sc-carousel-container"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                <div
+                    className="sc-carousel-track"
+                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                    {images.map((image, i) => {
+                        const imgSrc = typeof image === "string" ? image : image.src;
+                        
+                        return (
+                            <div key={i} className="sc-carousel-slide">
+                                <div 
+                                    className="sc-carousel-blur-bg"
+                                    style={{ backgroundImage: `url('/images/${imgSrc}')` }}
+                                ></div>
+                                <div className="sc-carousel-img-wrapper">
+                                    <img
+                                        src={`/images/${imgSrc}`}
+                                        alt={typeof image === "string" ? `${title} Image ${i + 1}` : image.title || `${title} Image ${i + 1}`}
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                <button
                 className="sc-carousel-btn prev"
                 aria-label="Previous slide"
                 onClick={() => setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)}
@@ -69,6 +90,7 @@ export default function ServiceCarousel({ images, title }) {
                     ></span>
                 ))}
             </div>
+        </div>
         </div>
     );
 }

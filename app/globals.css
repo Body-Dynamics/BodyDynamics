@@ -1899,8 +1899,8 @@
     .sc-carousel-container {
       position: relative;
       width: 100%;
-      height: clamp(300px, 45vw, 500px);
-      margin: 40px 0;
+      height: clamp(240px, 35vw, 420px);
+      margin: 10px 0 0 0;
       overflow: hidden;
       border-radius: 24px;
       box-shadow: 0 24px 50px rgba(9, 44, 86, 0.15);
@@ -1925,6 +1925,36 @@
       overflow: hidden;
     }
 
+    .sc-carousel-wrapper {
+      margin: 40px auto;
+      width: 100%;
+      max-width: 850px;
+    }
+
+    .sc-carousel-dynamic-title-container {
+      min-height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .sc-carousel-dynamic-title {
+      color: #ffffff;
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+      animation: fadeInText 1.2s ease-in-out forwards;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeInText {
+      0% { opacity: 0; transform: translateY(4px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     .sc-carousel-blur-bg {
       position: absolute;
       inset: -40px;
@@ -1947,7 +1977,7 @@
       z-index: 1;
       width: 100%;
       height: 100%;
-      padding: 10px;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
