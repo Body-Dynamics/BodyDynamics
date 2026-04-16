@@ -35,7 +35,8 @@ const teamColumns = [
             dept: "Remedial Therapy",
             members: [
                 { name: "ALKA AGRAWAL", quals: ["B.O.Th (Remedial Therapist)"] },
-                { name: "TEJAL SHAH", quals: ["B.Ed, Learning Disability", "Special Educator"] }
+                { name: "TEJAL SHAH", quals: ["B.Ed, Learning Disability", "Special Educator"] },
+                { name: "GEETA NANDAKUMAR", quals: ["Dip. Remedial Education", "Dip. Learning Disability", "Community Based Inclusive Development (RCI)"] }
             ]
         }
     ],

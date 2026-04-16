@@ -21,16 +21,16 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <div className="utility-bar">
-          <div className="container utility-inner">
-            <span className="contact-info">Call us: +91 902-907-0620 | Email: info@bodydynamics.com</span>
-            <div className="utility-links">
-              {/* <Link href="/#services">Programs</Link>
+        {/* <div className="utility-bar"> */}
+        {/* <div className="container utility-inner"> */}
+        {/* <span className="contact-info">Call us: +91 902-907-0620 | Email: info@bodydynamics.com</span> */}
+        {/* <div className="utility-links"> */}
+        {/* <Link href="/#services">Programs</Link>
               <Link href="/#team">Specialists</Link>
               <Link href="/#contact">Contact</Link> */}
-            </div>
-          </div>
-        </div>
+        {/* </div> */}
+        {/* </div> */}
+        {/* </div> */}
 
         <Navbar />
 

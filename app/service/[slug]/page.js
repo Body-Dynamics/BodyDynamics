@@ -65,18 +65,36 @@ export default async function ServicePage({ params }) {
                 </div>
             </header>
 
-            {service.overview && (
+            {(service.overview || service.secondary_overview) && (
                 <section className="sc-section sc-section-overview" style={{ background: "linear-gradient(to bottom, var(--navy), var(--teal))" }}>
-                    <div className="container">
-                        <div className="sc-intro">
-                            <h2 className="section-title" style={{ color: "#ffffff" }}>Overview</h2>
-                            <div className="section-line" style={{ marginInline: "auto", background: "var(--sky)" }}></div>
-                        </div>
-                        <div style={{ maxWidth: "900px", margin: "0 auto", background: "rgba(255, 255, 255, 0.12)", border: "1px solid rgba(255, 255, 255, 0.2)", borderLeft: "4px solid var(--sky)", padding: "2.5rem", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)", backdropFilter: "blur(10px)" }}>
-                            <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "center" }}>
-                                {service.overview}
-                            </p>
-                        </div>
+                    <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+                        
+                        {service.overview && (
+                            <div>
+                                <div className="sc-intro">
+                                    <h2 className="section-title" style={{ color: "#ffffff" }}>Overview</h2>
+                                    <div className="section-line" style={{ marginInline: "auto", background: "var(--sky)" }}></div>
+                                </div>
+                                <div style={{ maxWidth: "900px", margin: "0 auto", background: "rgba(255, 255, 255, 0.12)", border: "1px solid rgba(255, 255, 255, 0.2)", borderLeft: "4px solid var(--sky)", padding: "2.5rem", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)", backdropFilter: "blur(10px)" }}>
+                                    <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "justify", whiteSpace: "pre-line" }} dangerouslySetInnerHTML={{ __html: service.overview }}>
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+
+                        {service.secondary_overview && (
+                            <div>
+                                <div className="sc-intro">
+                                    <h2 className="section-title" style={{ color: "#ffffff" }}>{service.secondary_overview.title}</h2>
+                                    <div className="section-line" style={{ marginInline: "auto", background: "var(--sky)" }}></div>
+                                </div>
+                                <div style={{ maxWidth: "900px", margin: "0 auto", background: "rgba(255, 255, 255, 0.12)", border: "1px solid rgba(255, 255, 255, 0.2)", borderLeft: "4px solid var(--sky)", padding: "2.5rem", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)", backdropFilter: "blur(10px)" }}>
+                                    <div style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "justify", whiteSpace: "pre-line" }} dangerouslySetInnerHTML={{ __html: service.secondary_overview.desc }}>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
                     </div>
                 </section>
             )}
@@ -123,7 +141,7 @@ export default async function ServicePage({ params }) {
                 </div>
             </section>
 
-            {service.signs_of_need && slug === 'occupational-therapy' && (
+            {service.signs_of_need && (
                 <section className="sc-section sc-section-signs" style={{ background: "rgba(242, 246, 249, 0.5)" }}>
                     <div className="container">
                         <div className="sc-intro">
@@ -192,7 +210,7 @@ export default async function ServicePage({ params }) {
                                     <div key={idx} className="sc-strategy">
                                         <div className="sc-strategy-num">{idx + 1}</div>
                                         <strong>{strategy.title}</strong>
-                                        <p style={{ whiteSpace: "pre-line" }}>{strategy.desc}</p>
+                                        <p style={{ whiteSpace: "pre-line", textAlign: "justify" }}>{strategy.desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -204,13 +222,13 @@ export default async function ServicePage({ params }) {
                                     <h3 style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderBottom: "2px solid #A9CBE0", paddingBottom: "0.5rem", display: "inline-block" }}>
                                         {strategy.title}
                                     </h3>
-                                    <p style={{ whiteSpace: "pre-line", color: "var(--muted)", lineHeight: "1.7", fontSize: "1rem", maxWidth: "900px" }}>
+                                    <p style={{ whiteSpace: "pre-line", color: "var(--muted)", lineHeight: "1.7", fontSize: "1rem", maxWidth: "900px", textAlign: "justify" }}>
                                         {strategy.desc}
                                     </p>
                                     {strategy.aim && (
                                         <div style={{ marginTop: "1.5rem", padding: "1.5rem", background: "rgba(169, 203, 224, 0.15)", borderRadius: "12px", borderLeft: "4px solid var(--teal)", maxWidth: "900px" }}>
                                             {typeof strategy.aim === "string" ? (
-                                                <p style={{ whiteSpace: "pre-line", color: "var(--navy)", lineHeight: "1.7", fontSize: "0.95rem", margin: 0, fontWeight: "500" }}>
+                                                <p style={{ whiteSpace: "pre-line", color: "var(--navy)", lineHeight: "1.7", fontSize: "0.95rem", margin: 0, fontWeight: "500", textAlign: "justify" }}>
                                                     {strategy.aim}
                                                 </p>
                                             ) : (
@@ -243,7 +261,7 @@ export default async function ServicePage({ params }) {
                                                         {sIdx + 1}
                                                     </div>
                                                     <strong style={{ color: "#ffffff", position: "relative", zIndex: 1, fontSize: "1.05rem", textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}>{sub.title}</strong>
-                                                    <p style={{ whiteSpace: "pre-line", color: "rgba(255,255,255,0.9)", position: "relative", zIndex: 1, marginTop: "0.2rem" }}>{sub.desc}</p>
+                                                    <p style={{ whiteSpace: "pre-line", color: "rgba(255,255,255,0.9)", position: "relative", zIndex: 1, marginTop: "0.2rem", textAlign: "justify" }}>{sub.desc}</p>
                                                 </div>
                                             );
                                         }
@@ -251,7 +269,7 @@ export default async function ServicePage({ params }) {
                                             <div key={sIdx} className="sc-strategy">
                                                 <div className="sc-strategy-num">{sIdx + 1}</div>
                                                 <strong>{sub.title}</strong>
-                                                <p style={{ whiteSpace: "pre-line" }}>{sub.desc}</p>
+                                                <p style={{ whiteSpace: "pre-line", textAlign: "justify" }}>{sub.desc}</p>
                                             </div>
                                         );
                                     })}
@@ -261,36 +279,6 @@ export default async function ServicePage({ params }) {
                     </div>
                 </div>
             </section>
-
-            {service.signs_of_need && slug !== 'occupational-therapy' && (
-                <section className="sc-section sc-section-signs" style={{ background: "rgba(242, 246, 249, 0.5)" }}>
-                    <div className="container">
-                        <div className="sc-intro">
-                            <h2 className="section-title">Signs Your Child May Benefit</h2>
-                            <div className="section-line" style={{ marginInline: "auto" }}></div>
-                            <p>Here are some indicators that occupational therapy or sensory integration might be beneficial.</p>
-                        </div>
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2.5rem", marginTop: "2rem" }}>
-                            {service.signs_of_need.map((group, idx) => (
-                                <div key={`sign-group-${idx}`} style={{ display: "flex", flexDirection: "column" }}>
-                                    <div style={{ textAlign: "left", marginBottom: "1.2rem" }}>
-                                        <h3 style={{ fontSize: "1.25rem", color: "var(--teal)", margin: 0, borderBottom: "2px solid rgba(169, 203, 224, 0.4)", paddingBottom: "0.5rem", display: "inline-block" }}>
-                                            {group.category}
-                                        </h3>
-                                    </div>
-                                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
-                                        {group.items.map((item, iIdx) => (
-                                            <div key={iIdx} className="sc-strategy" style={{ padding: "1.2rem", margin: 0, minHeight: "auto", flex: 1, display: "flex", alignItems: "center", background: "rgba(169, 203, 224, 0.15)", borderRadius: "12px", border: "1px solid rgba(169, 203, 224, 0.3)" }}>
-                                                <p style={{ margin: 0, fontSize: "0.95rem", color: "var(--navy)", lineHeight: "1.5" }}>{item}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
 
 
             {service.extra_info && slug !== 'speech-therapy' && slug !== 'remedial-therapy' && (
