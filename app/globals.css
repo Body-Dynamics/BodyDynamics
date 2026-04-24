@@ -58,7 +58,7 @@
     }
 
     .section-pad {
-      padding: 88px 0;
+      padding: 64px 0;
     }
 
     .section-label {
@@ -452,7 +452,7 @@
 
     .welcome-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1fr;
       gap: 36px;
       align-items: center;
     }
@@ -841,6 +841,10 @@
       grid-template-columns: 2fr 1fr 1.2fr;
       gap: 28px;
       margin-bottom: 30px;
+    }
+
+    .footer-grid.has-map {
+      grid-template-columns: 2fr 0.6fr 1.3fr 1.2fr;
     }
 
     .footer-title {
@@ -1746,8 +1750,18 @@
       opacity: 0.8;
     }
 
+    details.sc-condition .sc-dropdown-icon .vertical-line {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform-origin: center;
+    }
+
     details.sc-condition[open] .sc-dropdown-icon {
       transform: rotate(180deg);
+    }
+
+    details.sc-condition[open] .sc-dropdown-icon .vertical-line {
+      opacity: 0;
+      transform: rotate(90deg);
     }
 
     details.sc-condition .sc-condition-content {

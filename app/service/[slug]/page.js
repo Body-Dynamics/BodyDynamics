@@ -109,16 +109,31 @@ export default async function ServicePage({ params }) {
                     <div className="sc-conditions-grid">
                         {service.conditions.map((condition, idx) => {
                             if (slug === "physiotherapy") {
+                                const conditionTitle = condition.title || condition;
                                 return (
                                     <details key={idx} className="sc-condition dropdown-condition">
                                         <summary>
-                                            <span style={{ flex: 1 }}>{condition}</span>
+                                            <span style={{ flex: 1 }}>{conditionTitle}</span>
                                             <svg className="sc-dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                                <line x1="12" y1="5" x2="12" y2="19" className="vertical-line"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
                                             </svg>
                                         </summary>
                                         <div className="sc-condition-content">
-                                            {/* Cases will be added here later */}
+                                            {condition.cases && condition.cases.length > 0 ? (
+                                                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem", padding: "1rem 1rem 0" }}>
+                                                    {condition.cases.map((c, i) => (
+                                                        <div key={i} className="sc-case-card" style={{ padding: "0.8rem 1.2rem", background: "var(--navy)", borderRadius: "8px", border: "1px solid var(--teal)", display: "flex", alignItems: "center", gap: "0.75rem", transition: "transform 0.2s ease, box-shadow 0.2s ease", cursor: "default", boxShadow: "0 4px 12px rgba(9, 44, 86, 0.15)" }}>
+                                                            <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "var(--sky)", flexShrink: 0 }}></div>
+                                                            <span style={{ fontSize: "0.95rem", color: "var(--white)", fontWeight: "500", lineHeight: "1.4" }}>{c}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <div style={{ padding: "1rem 1rem 0 1rem", fontSize: "0.95rem", color: "var(--muted)" }}>
+                                                    {/* Cases will be added here later */}
+                                                </div>
+                                            )}
                                         </div>
                                     </details>
                                 );
