@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ServicesSection from "@/components/ServicesSection";
 import TeamSection from "@/components/TeamSection";
+import ContactCTA from "@/components/ContactCTA";
 
 export default function Home() {
   return (
@@ -49,7 +50,19 @@ export default function Home() {
               <Link href="/#welcome" className="btn btn-outline">
                 Learn More
               </Link>
+              <Link href="/#team" className="btn btn-outline">
+                Meet the Team
+              </Link>
             </div>
+          </div>
+          
+          <div className="welcome-graphic reveal reveal-delay-1" aria-hidden="true">
+            <img
+              src="/images/BodyDynamicsLogo.png"
+              alt="Body Dynamics Clinic Logo"
+              width="350"
+              height="350"
+            />
           </div>
         </div>
       </header>
@@ -66,15 +79,6 @@ export default function Home() {
               Explore Our Services
             </Link>
           </div>
-
-          <div className="welcome-graphic reveal reveal-delay-1" aria-hidden="true">
-            <img
-              src="/images/BodyDynamicsLogo.png"
-              alt="Body Dynamics Clinic Logo"
-              width="350"
-              height="350"
-            />
-          </div>
         </div>
       </section>
 
@@ -82,25 +86,7 @@ export default function Home() {
 
       <TeamSection />
 
-      <section id="contact-cta">
-        <div className="container contact-cta-grid">
-          <div>
-            <h2>Ready to Start the Next Step in Recovery?</h2>
-            <p>
-              Schedule a consultation and meet the right team to support your goals with structured, compassionate care.
-            </p>
-          </div>
-          <Link
-            className="btn btn-outline"
-            // href="https://wa.me/917738571105?text=Hi, I would like to book an appointment."
-            href="#contact"
-          // target="_blank"
-          // rel="noopener noreferrer"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </section>
+      <ContactCTA />
     </main>
   );
 }
