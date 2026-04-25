@@ -21,7 +21,7 @@ export default function ContactCTA() {
   };
 
   return (
-    <section id="contact-cta">
+    <section id="contact-cta-section">
       <div className="container contact-cta-grid">
         <div>
           <h2>Ready to Start the Next Step in Recovery?</h2>
@@ -60,7 +60,7 @@ export default function ContactCTA() {
               </span>
             </>
           ) : (
-            <form onSubmit={handleSend} style={{ width: '100%', minWidth: '350px', background: 'var(--white)', padding: '24px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(9, 44, 86, 0.15)', border: '1px solid var(--border)' }}>
+            <form onSubmit={handleSend} style={{ width: 'min(450px, 95%)', maxWidth: '100%', background: 'var(--white)', padding: '24px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(9, 44, 86, 0.15)', border: '1px solid var(--border)' }}>
               <h3 style={{ marginBottom: '20px', color: 'var(--navy)', fontSize: '1.25rem', textAlign: 'center', fontWeight: '700' }}>Tell us about yourself</h3>
 
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>

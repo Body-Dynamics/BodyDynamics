@@ -44,7 +44,7 @@ export default function Home() {
               Established in the year 2005; Body Dynamics Clinic provides rehabilitation services to paediatric, adult as well as geriatric patients with developmental, neurological, orthopaedic and psychological challenges.
             </p>
             <div className="hero-actions">
-              <Link href="/#contact" className="btn btn-primary">
+              <Link href="/#contact-cta-section" className="btn btn-primary">
                 Book an Appointment
               </Link>
               <Link href="/#welcome" className="btn btn-outline">
@@ -55,7 +55,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          
+
           <div className="welcome-graphic reveal reveal-delay-1" aria-hidden="true">
             <img
               src="/images/BodyDynamicsLogo.png"
