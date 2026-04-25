@@ -19,17 +19,26 @@ export default function Navbar() {
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const closeMenu = () => setMenuOpen(false);
 
+    const handleLinkClick = (e, targetId) => {
+        closeMenu();
+        // If it's a hash link on the same page
+        if (targetId.startsWith("/#")) {
+            const id = targetId.replace("/#", "");
+            const element = document.getElementById(id);
+            if (element) {
+                e.preventDefault();
+                element.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, null, `/#${id}`);
+            }
+        }
+    };
+
     return (
         <nav id="navbar" className={scrolled ? "scrolled" : ""}>
             <div className="container nav-inner">
                 <Link href="/" className="nav-logo" aria-label="Body Dynamics Home" onClick={closeMenu}>
                     {/* Replaced next/image with img for perfect compatibility with current styling size attributes */}
-                    <img
-                        src="/images/BodyDynamicsLogo.png"
-                        alt="Body Dynamics Clinic Logo"
-                        width="100"
-                        height="100"
-                    />
+                    {/* <img src="/images/BodyDynamicsLogo.png" alt="Body Dynamics Clinic Logo" width="100" height="100" /> */}
                     <div className="logo-text">
                         <div className="brand">Body Dynamics</div>
                     </div>
@@ -37,11 +46,11 @@ export default function Navbar() {
 
                 <div className={`nav-overlay ${menuOpen ? "open" : ""}`} onClick={closeMenu}>
                     <ul className="nav-links" id="nav-links" onClick={(e) => e.stopPropagation()}>
-                        <li><Link href="/#home" onClick={closeMenu}>Home</Link></li>
-                        <li><Link href="/#welcome" onClick={closeMenu}>About Us</Link></li>
-                        <li><Link href="/#services" onClick={closeMenu}>Services</Link></li>
-                        <li><Link href="/#team" onClick={closeMenu}>Team</Link></li>
-                        <li><Link href="/#contact" onClick={closeMenu}>Contact</Link></li>
+                        <li><Link href="/#home" onClick={(e) => handleLinkClick(e, "/#home")}>Home</Link></li>
+                        <li><Link href="/#welcome" onClick={(e) => handleLinkClick(e, "/#welcome")}>About Us</Link></li>
+                        <li><Link href="/#services" onClick={(e) => handleLinkClick(e, "/#services")}>Services</Link></li>
+                        <li><Link href="/#team" onClick={(e) => handleLinkClick(e, "/#team")}>Team</Link></li>
+                        <li><Link href="/#contact-cta-section" onClick={(e) => handleLinkClick(e, "/#contact-cta-section")}>Contact</Link></li>
                     </ul>
                 </div>
 

@@ -39,9 +39,33 @@ export default function ScrollReveal() {
         const t1 = setTimeout(observeElements, 100);
         const t2 = setTimeout(observeElements, 500);
 
+        // Handle all hash links globally to ensure they always scroll on click
+        const handleHashClick = (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+            
+            const href = link.getAttribute('href');
+            if (href && href.includes('#')) {
+                const [path, hash] = href.split('#');
+                // If it's a same-page hash or we're on the home page and it's a home hash
+                if (path === '' || path === '/' || path === pathname) {
+                    const target = document.getElementById(hash);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        // Update URL without jump
+                        window.history.pushState(null, null, `${path}#${hash}`);
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('click', handleHashClick);
+
         return () => {
             observer.disconnect();
             mutationObserver.disconnect();
+            window.removeEventListener('click', handleHashClick);
             clearTimeout(t1);
             clearTimeout(t2);
         };
