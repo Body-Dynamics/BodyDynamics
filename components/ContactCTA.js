@@ -15,7 +15,7 @@ export default function ContactCTA() {
     e.preventDefault();
     const { name, age, concern } = formData;
     const text = `Hi, I would like to book an appointment.%0A%0A*Name:* ${name}%0A*Age:* ${age}%0A*Concern:* ${concern}`;
-    window.open(`https://wa.me/917738571105?text=${text}`, '_blank');
+    window.open(`https://wa.me/919029070620?text=${text}`, '_blank');
     setShowForm(false);
     setFormData({ name: '', age: '', concern: '' });
   };
