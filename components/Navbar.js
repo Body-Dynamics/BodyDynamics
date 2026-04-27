@@ -37,8 +37,7 @@ export default function Navbar() {
         <nav id="navbar" className={scrolled ? "scrolled" : ""}>
             <div className="container nav-inner">
                 <Link href="/" className="nav-logo" aria-label="Body Dynamics Home" onClick={closeMenu}>
-                    {/* Replaced next/image with img for perfect compatibility with current styling size attributes */}
-                    {/* <img src="/images/BodyDynamicsLogo.png" alt="Body Dynamics Clinic Logo" width="100" height="100" /> */}
+                    <img src="/images/BodyDynamics_Logo_Two_Tone_Flipped.jpg" alt="Body Dynamics Logo" />
                     <div className="logo-text">
                         <div className="brand">Body Dynamics</div>
                     </div>

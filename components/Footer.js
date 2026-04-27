@@ -9,9 +9,11 @@ export default function Footer() {
         <footer id="contact">
             <div className="container">
                 <div className={`footer-grid ${pathname === '/' ? 'has-map' : ''}`}>
-                    <div>
-                        <div className="footer-title">Body Dynamics - Rehab Solutions</div>
-                        <p className="footer-tag">Evidence-Based, Collaborative, Client-Centered Care</p>
+                    <div className="footer-brand">
+                        <div className="footer-brand-inner">
+                            <div className="footer-title">Body Dynamics - Rehab Solutions</div>
+                            <img src="/images/BodyDynamics_Logo_Two_Tone.jpg" alt="Body Dynamics Logo" className="footer-logo" />
+                        </div>
                     </div>
                     <div className="footer-col">
                         <h4>Navigation</h4>
@@ -26,16 +28,17 @@ export default function Footer() {
                         <div className="footer-col">
                             <h4>Maps</h4>
                             <a href="https://www.google.com/maps/search/?api=1&query=Body+Dynamics,+Bldg+No.+3,+Golders+Green+Building,+Shop+No.+2,+CHSL,+near+YMCA+Ground,+D-WING,+I+C+Colony,+Borivali+West,+Mumbai,+Maharashtra+400103" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden' }}>
-                                <iframe
-                                    title="Body Dynamics Location Map"
-                                    src="https://maps.google.com/maps?q=Body+Dynamics,+Bldg+No.+3,+Golders+Green+Building,+Shop+No.+2,+CHSL,+near+YMCA+Ground,+D-WING,+I+C+Colony,+Borivali+West,+Mumbai,+Maharashtra+400103&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                    width="100%"
-                                    height="180"
-                                    style={{ border: 0, pointerEvents: 'none', display: 'block' }}
-                                    allowFullScreen=""
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                ></iframe>
+                            <iframe
+                                title="Body Dynamics Location Map"
+                                src="https://maps.google.com/maps?q=Body+Dynamics,+Bldg+No.+3,+Golders+Green+Building,+Shop+No.+2,+CHSL,+near+YMCA+Ground,+D-WING,+I+C+Colony,+Borivali+West,+Mumbai,+Maharashtra+400103&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%"
+                                height="180"
+                                className="footer-map"
+                                style={{ border: 0, pointerEvents: 'none', display: 'block' }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
                             </a>
                             <div style={{ marginTop: '12px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: 'inherit' }}>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
