@@ -1020,7 +1020,7 @@
       }
     }
 
-    @media (max-width: 60px) {
+    @media (max-width: 992px) {
       .logo-text .brand {
         font-size: 1rem;
       }
@@ -1032,6 +1032,18 @@
 
       .hero-grid {
         min-height: auto;
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .welcome-graphic {
+        display: flex;
+        justify-content: center;
+        margin: 20px auto 0;
       }
 
       .services-grid {
