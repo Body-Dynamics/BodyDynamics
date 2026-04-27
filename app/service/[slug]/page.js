@@ -140,7 +140,7 @@ export default async function ServicePage({ params }) {
                             }
                             if (condition === "Audiology Services") {
                                 return (
-                                    <Link key={idx} href="#audiology-services" className="sc-condition" style={{ background: "linear-gradient(135deg, var(--sky) 0%, rgba(169, 203, 224, 0.4) 100%)", border: "1px solid var(--teal)", color: "var(--navy)", fontWeight: "600", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textDecoration: "none" }}>
+                                    <Link key={idx} href="#audiology-services" className="sc-condition" style={{ background: "linear-gradient(135deg, var(--sky) 0%, rgba(186, 199, 223, 0.4) 100%)", border: "1px solid var(--teal)", color: "var(--navy)", fontWeight: "600", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textDecoration: "none" }}>
                                         <span>{condition}</span>
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                             <polyline points="9 18 15 12 9 6"></polyline>
@@ -168,13 +168,13 @@ export default async function ServicePage({ params }) {
                             {service.signs_of_need.map((group, idx) => (
                                 <div key={`sign-group-${idx}`} style={{ display: "flex", flexDirection: "column" }}>
                                     <div style={{ textAlign: "left", marginBottom: "1.2rem" }}>
-                                        <h3 style={{ fontSize: "1.25rem", color: "var(--teal)", margin: 0, borderBottom: "2px solid rgba(169, 203, 224, 0.4)", paddingBottom: "0.5rem", display: "inline-block" }}>
+                                        <h3 style={{ fontSize: "1.25rem", color: "var(--teal)", margin: 0, borderBottom: "2px solid rgba(186, 199, 223, 0.4)", paddingBottom: "0.5rem", display: "inline-block" }}>
                                             {group.category}
                                         </h3>
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
                                         {group.items.map((item, iIdx) => (
-                                            <div key={iIdx} className="sc-strategy" style={{ padding: "1.2rem", margin: 0, minHeight: "auto", flex: 1, display: "flex", alignItems: "center", background: "rgba(169, 203, 224, 0.15)", borderRadius: "12px", border: "1px solid rgba(169, 203, 224, 0.3)" }}>
+                                            <div key={iIdx} className="sc-strategy" style={{ padding: "1.2rem", margin: 0, minHeight: "auto", flex: 1, display: "flex", alignItems: "center", background: "rgba(186, 199, 223, 0.15)", borderRadius: "12px", border: "1px solid rgba(186, 199, 223, 0.3)" }}>
                                                 <p style={{ margin: 0, fontSize: "0.95rem", color: "var(--navy)", lineHeight: "1.5" }}>{item}</p>
                                             </div>
                                         ))}
@@ -234,14 +234,14 @@ export default async function ServicePage({ params }) {
                         {service.strategies.filter(s => s.subSections).map((strategy, idx) => (
                             <div key={`group-${idx}`} className="sc-strategy-group" style={{ marginTop: idx > 0 || service.strategies.some(s => !s.subSections) ? "5rem" : "1rem" }}>
                                 <div className="sc-strategy-header">
-                                    <h3 style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderBottom: "2px solid #A9CBE0", paddingBottom: "0.5rem", display: "inline-block" }}>
+                                    <h3 style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderBottom: "2px solid var(--sky)", paddingBottom: "0.5rem", display: "inline-block" }}>
                                         {strategy.title}
                                     </h3>
                                     <p style={{ whiteSpace: "pre-line", color: "var(--muted)", lineHeight: "1.7", fontSize: "1rem", maxWidth: "900px", textAlign: "justify" }}>
                                         {strategy.desc}
                                     </p>
                                     {strategy.aim && (
-                                        <div style={{ marginTop: "1.5rem", padding: "1.5rem", background: "rgba(169, 203, 224, 0.15)", borderRadius: "12px", borderLeft: "4px solid var(--teal)", maxWidth: "900px" }}>
+                                        <div style={{ marginTop: "1.5rem", padding: "1.5rem", background: "rgba(186, 199, 223, 0.15)", borderRadius: "12px", borderLeft: "4px solid var(--teal)", maxWidth: "900px" }}>
                                             {typeof strategy.aim === "string" ? (
                                                 <p style={{ whiteSpace: "pre-line", color: "var(--navy)", lineHeight: "1.7", fontSize: "0.95rem", margin: 0, fontWeight: "500", textAlign: "justify" }}>
                                                     {strategy.aim}

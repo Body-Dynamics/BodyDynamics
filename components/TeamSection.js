@@ -7,17 +7,17 @@ const teamColumns = [
         {
             dept: "Physiotherapy",
             members: [
-                { name: "L. CHACKO", quals: ["BPT"] },
-                { name: "SHRUTI CHACKO", quals: ["BPT, NDT"] },
-                { name: "AMRUTA KULKARNI", quals: ["BPT, NDT"] },
-                { name: "AMRUTA SHAH", quals: ["BPT, NDT"] }
+                { name: "L. CHACKO", quals: ["BPT."] },
+                { name: "SHRUTI CHACKO", quals: ["BPT.", "NDT."] },
+                { name: "AMRUTA KULKARNI", quals: ["BPT.", "NDT."] },
+                { name: "AMRUTA SHAH", quals: ["BPT.", "NDT."] }
             ]
         },
         {
             dept: "Psychological Analysis & Counseling Services",
             members: [
-                { name: "DHARA BANGERA", quals: ["M.A Psychology", "Clinical Psychologist"] },
-                { name: "DARSHANA JAIN", quals: ["M.A Applied Psychology", "Counseling Psychologist"] }
+                { name: "DHARA BANGERA", quals: ["MA. Psychology", "Clinical Psychologist"] },
+                { name: "DARSHANA JAIN", quals: ["MA. Applied Psychology", "Counseling Psychologist"] }
             ]
         }
     ],
@@ -27,16 +27,16 @@ const teamColumns = [
         {
             dept: "Speech & Language Therapy",
             members: [
-                { name: "SHRUTI DEORE", quals: ["MASLP"] },
-                { name: "KRISTI KRISHNA", quals: ["MSC SLP"] },
+                { name: "SHRUTI DEORE", quals: ["MASLP."] },
+                { name: "KRISTI KRISHNA", quals: ["MSc. SLP"] },
             ]
         },
         {
             dept: "Remedial Therapy",
             members: [
-                { name: "ALKA AGRAWAL", quals: ["B.O.Th (Remedial Therapist)"] },
-                { name: "TEJAL SHAH", quals: ["B.Ed, Learning Disability", "Special Educator"] },
-                { name: "GEETA NANDAKUMAR", quals: ["Dip. Remedial Education", "Dip. Learning Disability", "Community Based Inclusive Development (RCI)"] }
+                { name: "ALKA AGRAWAL", quals: ["BOTh. (Remedial Therapist)"] },
+                { name: "TEJAL SHAH", quals: ["BEd. (Learning Disability)", "Special Educator"] },
+                { name: "GEETA NANDAKUMAR", quals: ["Dip. Remedial Education.", "Dip. Learning Disability.", "Community Based Inclusive Development (RCI)."] }
             ]
         }
     ],
@@ -46,17 +46,17 @@ const teamColumns = [
         {
             dept: "Occupational Therapy",
             members: [
-                { name: "MADHURI MALAKAR", quals: ["M.O.Th.", "SI and HWT Certified"] },
-                { name: "KIRAN PAL", quals: ["M.O.Th."] },
-                { name: "KHUSHBU SHAH", quals: ["B.O.Th."] },
-                { name: "JILL SAVANI", quals: ["B.O.Th."] },
-                { name: "PRIYANKA DUBE", quals: ["B.O.Th."] }
+                { name: "MADHURI MALAKAR", quals: ["MOTh.", "SI. and HWT. Certified"] },
+                { name: "KIRAN PAL", quals: ["MOTh."] },
+                { name: "KHUSHBU SHAH", quals: ["BOTh."] },
+                { name: "JILL SAVANI", quals: ["BOTh."] },
+                { name: "PRIYANKA DUBE", quals: ["BOTh."] }
             ]
         },
         {
             dept: "Behavioural Therapy",
             members: [
-                { name: "RAZIA ALI", quals: ["Bsc, B.Ed,", "BCABA (ABA Therapy)", "International Behavior Analyst (IBA)"] }
+                { name: "RAZIA ALI", quals: ["BSc.", "BEd.", "BCaBA. (ABA. Therapy)", "International Behavior Analyst (IBA)."] }
             ]
         }
     ]
@@ -83,7 +83,9 @@ export default function TeamSection() {
                                         <div key={memberIndex} className="team-card-compact">
                                             <div className="member-name">{member.name}</div>
                                             <div className="member-spec">
-                                                {member.quals.join(", ")}
+                                                {member.quals.map((qual, i) => (
+                                                    <div key={i}>{qual}</div>
+                                                ))}
                                             </div>
                                         </div>
                                     ))}
