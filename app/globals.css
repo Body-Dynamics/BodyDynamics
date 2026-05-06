@@ -116,6 +116,8 @@
 
     .section-sub {
       color: var(--muted);
+      font-size: 1.3rem;
+      font-weight: 500;
       /* max-width: 760px; */
     }
 
@@ -381,7 +383,8 @@
     .hero-sub {
       color: var(--muted);
       max-width: 700px;
-      font-size: 1.02rem;
+      font-size: 1.3rem;
+      font-weight: 500;
       line-height: 1.78;
       margin-bottom: 30px;
       opacity: 0;
@@ -495,7 +498,8 @@
 
     .welcome-copy p {
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
       line-height: 1.85;
       margin-bottom: 16px;
     }
@@ -860,6 +864,8 @@
 
     .contact-cta-grid p {
       color: var(--quartz);
+      font-size: 1.3rem;
+      font-weight: 500;
       max-width: 660px;
     }
 
@@ -904,7 +910,7 @@
 
 
     .footer-logo {
-      max-width: 220px;
+      max-width: 300px;
       height: auto;
       margin-top: 12px;
       margin-bottom: 20px;
@@ -914,7 +920,7 @@
     }
 
     .footer-logo:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .footer-map {
@@ -953,7 +959,7 @@
 
     .footer-col a {
       color: var(--white);
-      font-size: 0.9rem;
+      font-size: 1.1 rem;
       transition: color 0.25s ease;
     }
 
@@ -1711,8 +1717,9 @@
 
     .sc-hero p {
       color: rgba(255, 255, 255, 0.82);
-      font-size: 1.05rem;
-      max-width: 640px;
+      font-size: 1.3rem;
+      font-weight: 500;
+      max-width: 720px;
       margin: 0 auto;
       line-height: 1.75;
     }
@@ -1756,7 +1763,8 @@
     }
 
     .sc-intro p {
-      font-size: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
       line-height: 1.8;
     }
 
