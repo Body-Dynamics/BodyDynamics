@@ -214,9 +214,9 @@ export default async function ServicePage({ params }) {
             <section className="sc-section sc-section-strategies">
                 <div className="container">
                     <div className="sc-intro">
-                        <h2 className="section-title">Therapy Strategies</h2>
+                        <h2 className="section-title">{slug === "psychoeducational-assessment" ? "Assessment Strategies" : "Therapy Strategies"}</h2>
                         <div className="section-line" style={{ marginInline: "auto" }}></div>
-                        <p>Therapy is individualized and evidence-based, tailored to each patient's specific needs and goals.</p>
+                        <p>{slug === "psychoeducational-assessment" ? "Assessments are individualized and evidence-based, tailored to each patient's specific needs and goals." : "Therapy is individualized and evidence-based, tailored to each patient's specific needs and goals."}</p>
                     </div>
                     <div className="sc-strategies-content">
                         {service.strategies.some(s => !s.subSections) && (
