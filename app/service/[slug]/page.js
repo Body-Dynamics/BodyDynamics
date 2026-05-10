@@ -76,7 +76,7 @@ export default async function ServicePage({ params }) {
                                     <div className="section-line" style={{ marginInline: "auto", background: "var(--sky)" }}></div>
                                 </div>
                                 <div style={{ maxWidth: "900px", margin: "0 auto", background: "rgba(255, 255, 255, 0.12)", border: "1px solid rgba(255, 255, 255, 0.2)", borderLeft: "4px solid var(--sky)", padding: "2.5rem", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)", backdropFilter: "blur(10px)" }}>
-                                    <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "justify", whiteSpace: "pre-line" }} dangerouslySetInnerHTML={{ __html: service.overview }}>
+                                    <p style={{ fontSize: "1.15rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "justify", whiteSpace: "pre-line" }} dangerouslySetInnerHTML={{ __html: service.overview }}>
                                     </p>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ export default async function ServicePage({ params }) {
                                     <div className="section-line" style={{ marginInline: "auto", background: "var(--sky)" }}></div>
                                 </div>
                                 <div style={{ maxWidth: "900px", margin: "0 auto", background: "rgba(255, 255, 255, 0.12)", border: "1px solid rgba(255, 255, 255, 0.2)", borderLeft: "4px solid var(--sky)", padding: "2.5rem", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)", backdropFilter: "blur(10px)" }}>
-                                    <div style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "justify", whiteSpace: "pre-line" }} dangerouslySetInnerHTML={{ __html: service.secondary_overview.desc }}>
+                                    <div style={{ fontSize: "1.15rem", lineHeight: "1.8", color: "rgba(255, 255, 255, 0.95)", margin: 0, textAlign: "justify", whiteSpace: "pre-line" }} dangerouslySetInnerHTML={{ __html: service.secondary_overview.desc }}>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ export default async function ServicePage({ params }) {
                                                     {condition.cases.map((c, i) => (
                                                         <div key={i} className="sc-case-card" style={{ padding: "0.8rem 1.2rem", background: "var(--navy)", borderRadius: "8px", border: "1px solid var(--teal)", display: "flex", alignItems: "center", gap: "0.75rem", transition: "transform 0.2s ease, box-shadow 0.2s ease", cursor: "default", boxShadow: "0 4px 12px rgba(9, 44, 86, 0.15)" }}>
                                                             <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "var(--sky)", flexShrink: 0 }}></div>
-                                                            <span style={{ fontSize: "0.95rem", color: "var(--white)", fontWeight: "500", lineHeight: "1.4" }}>{c}</span>
+                                                            <span style={{ fontSize: "1.1rem", color: "var(--white)", fontWeight: "500", lineHeight: "1.5" }}>{c}</span>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -168,14 +168,14 @@ export default async function ServicePage({ params }) {
                             {service.signs_of_need.map((group, idx) => (
                                 <div key={`sign-group-${idx}`} style={{ display: "flex", flexDirection: "column" }}>
                                     <div style={{ textAlign: "left", marginBottom: "1.2rem" }}>
-                                        <h3 style={{ fontSize: "1.25rem", color: "var(--teal)", margin: 0, borderBottom: "2px solid rgba(186, 199, 223, 0.4)", paddingBottom: "0.5rem", display: "inline-block" }}>
+                                        <h3 style={{ fontSize: "1.4rem", color: "var(--navy)", margin: 0, borderBottom: "2px solid rgba(186, 199, 223, 0.4)", paddingBottom: "0.5rem", display: "inline-block" }}>
                                             {group.category}
                                         </h3>
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
                                         {group.items.map((item, iIdx) => (
                                             <div key={iIdx} className="sc-strategy" style={{ padding: "1.2rem", margin: 0, minHeight: "auto", flex: 1, display: "flex", alignItems: "center", background: "rgba(186, 199, 223, 0.15)", borderRadius: "12px", border: "1px solid rgba(186, 199, 223, 0.3)" }}>
-                                                <p style={{ margin: 0, fontSize: "0.95rem", color: "var(--navy)", lineHeight: "1.5" }}>{item}</p>
+                                                <p style={{ margin: 0, fontSize: "1.1rem", color: "var(--navy)", lineHeight: "1.6" }}>{item}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -186,8 +186,8 @@ export default async function ServicePage({ params }) {
                 </section>
             )}
 
-            {(slug === 'speech-therapy' || slug === 'remedial-therapy') && service.extra_info && (
-                <section id={slug === 'speech-therapy' ? "audiology-services" : "aims-section"} className="sc-section sc-section-audiology">
+            {service.extra_info && (
+                <section id={slug === 'speech-therapy' ? "audiology-services" : (slug === 'remedial-therapy' ? "aims-section" : undefined)} className="sc-section sc-section-audiology">
                     <div className="container">
                         <div className="sc-intro">
                             <h2 className="section-title">{service.extra_info.title}</h2>
@@ -234,20 +234,20 @@ export default async function ServicePage({ params }) {
                         {service.strategies.filter(s => s.subSections).map((strategy, idx) => (
                             <div key={`group-${idx}`} className="sc-strategy-group" style={{ marginTop: idx > 0 || service.strategies.some(s => !s.subSections) ? "5rem" : "1rem" }}>
                                 <div className="sc-strategy-header">
-                                    <h3 style={{ fontSize: "1.5rem", color: "var(--navy)", marginBottom: "1rem", borderBottom: "2px solid var(--sky)", paddingBottom: "0.5rem", display: "inline-block" }}>
+                                    <h3 style={{ fontSize: "1.65rem", color: "var(--navy)", marginBottom: "1rem", borderBottom: "2px solid var(--sky)", paddingBottom: "0.5rem", display: "inline-block" }}>
                                         {strategy.title}
                                     </h3>
-                                    <p style={{ whiteSpace: "pre-line", color: "var(--muted)", lineHeight: "1.7", fontSize: "1rem", maxWidth: "900px", textAlign: "justify" }}>
+                                    <p style={{ whiteSpace: "pre-line", color: "var(--navy)", lineHeight: "1.75", fontSize: "1.1rem", maxWidth: "900px", textAlign: "justify" }}>
                                         {strategy.desc}
                                     </p>
                                     {strategy.aim && (
                                         <div style={{ marginTop: "1.5rem", padding: "1.5rem", background: "rgba(186, 199, 223, 0.15)", borderRadius: "12px", borderLeft: "4px solid var(--teal)", maxWidth: "900px" }}>
                                             {typeof strategy.aim === "string" ? (
-                                                <p style={{ whiteSpace: "pre-line", color: "var(--navy)", lineHeight: "1.7", fontSize: "0.95rem", margin: 0, fontWeight: "500", textAlign: "justify" }}>
+                                                <p style={{ whiteSpace: "pre-line", color: "var(--navy)", lineHeight: "1.7", fontSize: "1.05rem", margin: 0, fontWeight: "500", textAlign: "justify" }}>
                                                     {strategy.aim}
                                                 </p>
                                             ) : (
-                                                <div style={{ color: "var(--navy)", fontSize: "0.95rem", lineHeight: "1.7" }}>
+                                                <div style={{ color: "var(--navy)", fontSize: "1.05rem", lineHeight: "1.7" }}>
                                                     <p style={{ fontWeight: "600", marginBottom: "0.2rem" }}>{strategy.aim.intro}</p>
                                                     <ul style={{ paddingLeft: "1.5rem", marginBottom: "1rem" }}>
                                                         {strategy.aim.points.map((pt, i) => <li key={i} style={{ marginBottom: "0.3rem" }}>{pt}</li>)}
@@ -275,7 +275,7 @@ export default async function ServicePage({ params }) {
                                                     <div className="sc-strategy-num" style={{ background: "rgba(255, 255, 255, 0.15)", color: "#ffffff", position: "relative", zIndex: 1 }}>
                                                         {sIdx + 1}
                                                     </div>
-                                                    <strong style={{ color: "#ffffff", position: "relative", zIndex: 1, fontSize: "1.05rem", textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}>{sub.title}</strong>
+                                                    <strong style={{ color: "#ffffff", position: "relative", zIndex: 1, fontSize: "1.2rem", textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}>{sub.title}</strong>
                                                     <p style={{ whiteSpace: "pre-line", color: "rgba(255,255,255,0.9)", position: "relative", zIndex: 1, marginTop: "0.2rem", textAlign: "justify" }}>{sub.desc}</p>
                                                 </div>
                                             );
@@ -296,30 +296,6 @@ export default async function ServicePage({ params }) {
             </section>
 
 
-            {service.extra_info && slug !== 'speech-therapy' && slug !== 'remedial-therapy' && (
-                <section className="sc-section sc-section-audiology">
-                    <div className="container">
-                        <div className="sc-intro">
-                            <h2 className="section-title">{service.extra_info.title}</h2>
-                            <div className="section-line" style={{ marginInline: "auto" }}></div>
-                            <p>{service.extra_info.desc}</p>
-                        </div>
-                        <div className="sc-audio-grid">
-                            {service.extra_info.items.map((item, idx) => (
-                                <div key={idx} className="sc-audio-item">
-                                    <div className="sc-audio-icon">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                            <circle cx="12" cy="12" r="3" />
-                                            <path d="M12 3a9 9 0 0 1 0 18" />
-                                        </svg>
-                                    </div>
-                                    <span className="sc-audio-text">{item}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
         </main>
     );
 }
