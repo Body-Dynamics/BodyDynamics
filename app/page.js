@@ -56,14 +56,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="welcome-graphic reveal reveal-delay-1" aria-hidden="true">
-            <img
-              src="/images/BodyDynamicsLogo.png"
-              alt="Body Dynamics Clinic Logo"
-              width="350"
-              height="350"
-            />
-          </div>
+          <img
+            src="/images/BodyDynamics_Logo_Two_Tone.jpg"
+            alt="Body Dynamics Clinic Logo"
+            className="hero-logo"
+            width="350"
+            height="350"
+          />
+          {/* <div className="welcome-graphic reveal reveal-delay-1" aria-hidden="true">
+          </div> */}
         </div>
       </header>
 

@@ -81,6 +81,8 @@ export default function ServiceCarousel({ images, title }) {
                 </svg>
             </button>
 
+        </div>
+
             <div className="sc-carousel-dots">
                 {images.map((_, i) => (
                     <span
@@ -90,7 +92,6 @@ export default function ServiceCarousel({ images, title }) {
                     ></span>
                 ))}
             </div>
-        </div>
         </div>
     );
 }
