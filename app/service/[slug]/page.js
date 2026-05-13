@@ -121,7 +121,7 @@ export default async function ServicePage({ params }) {
                                         </summary>
                                         <div className="sc-condition-content">
                                             {condition.cases && condition.cases.length > 0 ? (
-                                                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem", padding: "1rem 1rem 0" }}>
+                                                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: "1rem", padding: "1rem 1rem 0" }}>
                                                     {condition.cases.map((c, i) => (
                                                         <div key={i} className="sc-case-card" style={{ padding: "0.8rem 1.2rem", background: "var(--navy)", borderRadius: "8px", border: "1px solid var(--teal)", display: "flex", alignItems: "center", gap: "0.75rem", transition: "transform 0.2s ease, box-shadow 0.2s ease", cursor: "default", boxShadow: "0 4px 12px rgba(9, 44, 86, 0.15)" }}>
                                                             <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "var(--sky)", flexShrink: 0 }}></div>

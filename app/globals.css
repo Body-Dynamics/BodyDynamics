@@ -346,8 +346,10 @@
     }
 
     .hero-logo {
-      justify-self: center; /* Moving it rightwards/centering in its column to create balanced space */
-      margin-left: 2rem; /* Additional space between text and image */
+      justify-self: center;
+      /* Moving it rightwards/centering in its column to create balanced space */
+      margin-left: 2rem;
+      /* Additional space between text and image */
     }
 
     .hero-chip {
@@ -700,24 +702,26 @@
     }
 
     .dept-grid-container {
-      column-count: 1;
-      column-gap: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
       background: #e1e7f0;
       border-radius: 20px;
-      padding: 40px 24px 16px;
+      padding: 40px 24px;
       color: #000000 !important;
       overflow: hidden !important;
+      align-items: start;
     }
 
     @media (min-width: 600px) {
       .dept-grid-container {
-        column-count: 2;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (min-width: 900px) {
       .dept-grid-container {
-        column-count: 3;
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -736,12 +740,8 @@
     }
 
     .dept-section-card {
-      break-inside: avoid;
-      page-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
       border-radius: 16px;
       padding: 30px 24px;
       text-align: center;
